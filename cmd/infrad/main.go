@@ -3,9 +3,10 @@ package main
 import (
 	"os"
 
+	"github.com/adjacent-labs/infra/app"
+
 	"cosmossdk.io/log"
 
-	"github.com/adjacent-labs/infra/app"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 )
 

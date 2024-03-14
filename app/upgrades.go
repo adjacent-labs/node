@@ -3,10 +3,10 @@ package app
 import (
 	"fmt"
 
-	upgradetypes "cosmossdk.io/x/upgrade/types"
-
 	"github.com/adjacent-labs/infra/app/upgrades"
 	"github.com/adjacent-labs/infra/app/upgrades/noop"
+
+	upgradetypes "cosmossdk.io/x/upgrade/types"
 )
 
 // Upgrades list of chain upgrades

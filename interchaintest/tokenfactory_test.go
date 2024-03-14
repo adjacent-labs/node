@@ -59,5 +59,4 @@ func TestTokenFactory(t *testing.T) {
 	t.Cleanup(func() {
 		_ = ic.Close()
 	})
-
 }

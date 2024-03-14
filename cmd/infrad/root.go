@@ -3,6 +3,8 @@ package main
 import (
 	"os"
 
+	"github.com/adjacent-labs/infra/app"
+	"github.com/adjacent-labs/infra/app/params"
 	dbm "github.com/cosmos/cosmos-db"
 	"github.com/spf13/cobra"
 
@@ -22,8 +24,6 @@ import (
 
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/adjacent-labs/infra/app"
-	"github.com/adjacent-labs/infra/app/params"
 )
 
 // NewRootCmd creates a new root command for chain app. It is called once in the

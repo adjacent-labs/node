@@ -3,6 +3,7 @@ package app
 import (
 	"testing"
 
+	"github.com/adjacent-labs/infra/app/params"
 	dbm "github.com/cosmos/cosmos-db"
 
 	"cosmossdk.io/log"
@@ -10,7 +11,6 @@ import (
 	simtestutil "github.com/cosmos/cosmos-sdk/testutil/sims"
 
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
-	"github.com/adjacent-labs/infra/app/params"
 )
 
 // MakeEncodingConfig creates a new EncodingConfig with all modules registered. For testing only

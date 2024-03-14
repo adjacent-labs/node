@@ -3,12 +3,12 @@ package noop
 import (
 	"context"
 
+	"github.com/adjacent-labs/infra/app/upgrades"
+
 	storetypes "cosmossdk.io/store/types"
 	upgradetypes "cosmossdk.io/x/upgrade/types"
 
 	"github.com/cosmos/cosmos-sdk/types/module"
-
-	"github.com/adjacent-labs/infra/app/upgrades"
 )
 
 // NewUpgrade constructor

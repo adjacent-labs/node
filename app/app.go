@@ -14,6 +14,9 @@ import (
 	tmproto "github.com/cometbft/cometbft/proto/tendermint/types"
 	dbm "github.com/cosmos/cosmos-db"
 	"github.com/cosmos/gogoproto/proto"
+	"github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8/packetforward"
+	packetforwardkeeper "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8/packetforward/keeper"
+	packetforwardtypes "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8/packetforward/types"
 	"github.com/cosmos/ibc-go/modules/capability"
 	capabilitykeeper "github.com/cosmos/ibc-go/modules/capability/keeper"
 	capabilitytypes "github.com/cosmos/ibc-go/modules/capability/types"
@@ -39,6 +42,10 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 	ibctm "github.com/cosmos/ibc-go/v8/modules/light-clients/07-tendermint"
 	"github.com/spf13/cast"
+	tokenfactory "github.com/strangelove-ventures/tokenfactory/x/tokenfactory"
+	tokenfactorybindings "github.com/strangelove-ventures/tokenfactory/x/tokenfactory/bindings"
+	tokenfactorykeeper "github.com/strangelove-ventures/tokenfactory/x/tokenfactory/keeper"
+	tokenfactorytypes "github.com/strangelove-ventures/tokenfactory/x/tokenfactory/types"
 
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 	reflectionv1 "cosmossdk.io/api/cosmos/reflection/v1"
@@ -138,15 +145,6 @@ import (
 	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-
-	tokenfactory "github.com/strangelove-ventures/tokenfactory/x/tokenfactory"
-	tokenfactorybindings "github.com/strangelove-ventures/tokenfactory/x/tokenfactory/bindings"
-	tokenfactorykeeper "github.com/strangelove-ventures/tokenfactory/x/tokenfactory/keeper"
-	tokenfactorytypes "github.com/strangelove-ventures/tokenfactory/x/tokenfactory/types"
-
-	"github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8/packetforward"
-	packetforwardkeeper "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8/packetforward/keeper"
-	packetforwardtypes "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v8/packetforward/types"
 )
 
 const appName = "infra"
@@ -155,12 +153,13 @@ var (
 	NodeDir      = ".infra"
 	Bech32Prefix = "xpz"
 
-	capabilities = strings.Join(
-		[]string{
-			"iterator", "staking", "stargate",
-			"cosmwasm_1_1", "cosmwasm_1_2", "cosmwasm_1_3", "cosmwasm_1_4",
-			"token_factory",
-		}, ",")
+// capabilities = strings.Join(
+//
+//	[]string{
+//		"iterator", "staking", "stargate",
+//		"cosmwasm_1_1", "cosmwasm_1_2", "cosmwasm_1_3", "cosmwasm_1_4",
+//		"token_factory",
+//	}, ",")
 )
 
 // These constants are derived from the above variables.
