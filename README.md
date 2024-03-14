@@ -21,4 +21,4 @@
 ## Testing
 
 - `go test ./... -v` *Unit test*
-- `make ictest-*`  *E2E testing*
+- `make ictest-*`  *E2E testing*# maestro
